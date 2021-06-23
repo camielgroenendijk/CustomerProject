@@ -10,8 +10,8 @@
     <form method=POST action="{{route('customers.store')}}">
         @csrf
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Customer Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="name" class="form-label">Customer Name</label>
+            <input type="text" class="form-control" name="name" id="name" aria-describedby="emailHelp">
             @error('name')
             {{$message}}
             @enderror
