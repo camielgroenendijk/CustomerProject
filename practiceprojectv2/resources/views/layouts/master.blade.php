@@ -21,50 +21,14 @@
     <title>Customers Project | @yield('title')</title>
 </head>
 <body>
-{{--
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
-    <div class="container">
-        <a class="navbar-brand" href="{{route('home')}}"><h1>Business Cards App</h1></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="{{Request::is('home') ? 'active' : '' }} nav-link " aria-current="page" href="{{route('home')}}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class=" {{Request::is('about') ? 'active' : '' }} nav-link" href="{{route('about')}}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="{{Request::is('contact') ? 'active' : '' }} nav-link" href="{{route('contact')}}">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class=" {{Request::is('customers*') ? 'active' : '' }} nav-link" href="{{route('customers.index')}}">Customers</a>
-                </li>
-                --}}
-{{--<li class="nav-item">--}}{{--
-
-                --}}
-{{--<a class="nav-link" href="{{route('login')}}">Login</a>--}}{{--
-
-                --}}
-{{--</li>--}}{{--
-
-            </ul>
-        </div>
-    </div>
-</nav>
---}}
-
 <section class="content">
     <div class="container">
         @yield('content')
     </div>
 </section>
-
 <footer class="footer-bg">
     <div class="container">
+        <a class="btn" href="{{route('welcome')}}">Terug naar overzicht</a>
         <p class="footer_text">@Camiel Groenendijk</p>
     </div>
 </footer>
