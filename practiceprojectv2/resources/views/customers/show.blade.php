@@ -1,18 +1,37 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-<div class="container">
-    <h1>ID: #{{$customer->id}}</h1>
-    <label for="title">Title</label>
-    <p>{{$customer->name}}</p>
-</div>
+<?php
+?>
+
+@extends('layouts.master')
+
+@section('title')
+    Appointments
+@endsection
+@section('content')
+<table>
+    <thead>
+    <tr>
+        <th>Customer ID</th>
+        <th>
+            Beschrijving
+        </th>
+        <th>Created at</th>
+    </tr>
+    </thead>
+    <tbody>
+    @forelse($customer->appointments as $appointment)
+        <tr>
+            <td>{{ $appointment->customer_id }}</td>
+            <td><a href="{{ route('appointments.show', $appointment->id) }}">{{ $appointment->title }} </a></td>
+            <td>{{ $appointment->beschrijving }}</td>
+            <td>{{ $appointment->created_at }}</td>
+        </tr>
+    @empty
+        <tr>
+            <td colspan="3">Er zijn geen afsrpaken gemaakt met deze customer</td>
+        </tr>
+    @endforelse
+    </tbody>
+</table>
 
 <div class="item buttons">
     <a class="btn" id="card_btn-edit" href="{{route('customers.edit', $customer->id)}}">Edit Customer</a>
@@ -22,5 +41,4 @@
         <input class="link" id="card_btn-del" type="submit" value="Delete Customer">
     </form>
 </div>
-</body>
-</html>
+@endsection

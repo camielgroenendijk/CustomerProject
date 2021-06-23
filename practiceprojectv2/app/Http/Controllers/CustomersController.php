@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,11 @@ class CustomersController extends Controller
      */
     public function store(Request $request)
     {
+
+        $request->validate([
+           'name'   => 'required'
+        ]);
+
         $customer = Customer::create([      // creert een attribuut in de tabel met title, content, en user_id.
             'name' => $request->name,          // pakt de input die in de form op de create page staat aangegeven met de name: title en zorgt dat het opgeslagen word in de database tabel
         ]);
@@ -56,6 +62,7 @@ class CustomersController extends Controller
      */
     public function show($id)
     {
+        $appointments = Appointment::all();
         $customer = Customer::FindorFail($id);      // zoekt naar de id en anders word de fout melding 'net' afgehandeld word
         return view('customers.show', [
             'customer' => $customer
@@ -70,7 +77,10 @@ class CustomersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $customer = Customer::FindOrFail($id);
+        return view('customers.edit',[
+            'customer' => $customer
+        ]);
     }
 
     /**
@@ -82,7 +92,10 @@ class CustomersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $customer = Customer::FindOrFail($id);
+        $customer->update([
+            'name' => $request->title,
+        ]);
     }
 
     /**

@@ -14,6 +14,6 @@ class Customer extends Model
 
     public function appointments()
     {
-        return $this->hasMany(Appointment::class)->orderBy('created_at', 'desc');
+        return $this->hasMany(Appointment::class);
     }
 }
